@@ -1,0 +1,10 @@
+{
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "python.analysis.typeCheckingMode": "standard",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.generateWithTypeAnnotation": true
+}
