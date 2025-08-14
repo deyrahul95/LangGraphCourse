@@ -7,6 +7,7 @@ from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START, END
 
 import os
+import re
 
 
 load_dotenv()
@@ -25,13 +26,17 @@ llm = ChatOpenAI(
 )
 
 
+def remove_think_block(text) -> str:
+    return re.sub(r"<think>.*?</think>\s*", "", text, flags=re.DOTALL)
+
+
 def process_node(state: AgentState) -> AgentState:
     """Simple process node, To get response from the LLM"""
 
     response = llm.invoke(state["messages"])
-    print(f"\n AI => {response.content}")
+    print(f"\n AI => {remove_think_block(response.content)}")
 
-    state["messages"].append(AIMessage(content=response.content))
+    state["messages"].append(AIMessage(content=remove_think_block(response.content)))
     print(f"\n CURRENT STATE => {state['messages']}")
 
     return state
