@@ -56,5 +56,18 @@ user_input = input(" Enter => ")
 while user_input != "quit":
     conversion_history.append(HumanMessage(content=user_input))
     result = agent.invoke({"messages": conversion_history})
-    conversion_history = result["messages"]
+    conversion_history = result["messages"] 
     user_input = input("\n Enter => ")
+
+with open("log.txt", "w") as file:
+    file.write("=============== 🧑‍💻 Your Conversation Log ============= \n")
+
+    for message in conversion_history:
+        if isinstance(message, HumanMessage):
+            file.write(f"🤗 You => {message.content} \n")
+        elif isinstance(message, AIMessage):
+            file.write(f"🤖 AI => {message.content} \n")
+
+    file.write("============== 🛑 End of Conversion ================ \n")
+
+print("🎉 Conversation saved to `log.txt` file.")
