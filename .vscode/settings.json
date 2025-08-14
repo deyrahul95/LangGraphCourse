@@ -8,6 +8,8 @@
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.generateWithTypeAnnotation": true,
     "cSpell.words": [
-        "langgraph"
+        "dotenv",
+        "langgraph",
+        "qwen"
     ]
 }
