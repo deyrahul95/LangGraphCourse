@@ -104,5 +104,11 @@ def print_stream(stream):
             message.pretty_print()
 
 
-inputs = AgentState(messages=[HumanMessage(content="Add 20 and 30 then multiply the result with 10. Tell me a joke after that.")])
+inputs = AgentState(
+    messages=[
+        HumanMessage(
+            content="Add 20 and 30 then multiply the result with 10. Tell me a joke after that."
+        )
+    ]
+)
 print_stream(graph.stream(input=inputs, stream_mode="values"))
